@@ -69,6 +69,8 @@ urlpatterns = [
         RedirectView.as_view(url="/", permanent=True),
         name="profile-redirect",
     ),
+    # Courses API
+    path("api/v1/", include("courses.api.urls", namespace="courses_api")),
     # swagger urls
     re_path(
         r"^swagger(?P<format>\.json|\.yaml)$",
