@@ -1,4 +1,4 @@
-django>=4.0
+Django>=4.0.4
 dj-rest-auth @ git+https://github.com/iMerica/dj-rest-auth.git@master
 djangorestframework>=3.13.0
 djangorestframework-simplejwt>=5.2.0
@@ -6,3 +6,9 @@ django-allauth>=0.24.1
 drf-yasg>=1.21.3
 django-cors-headers>=3.2.1
 coreapi>=2.3.3
+
+# Production
+asgiref>=3.5.2
+gunicorn>=20.1.0
+psycopg2>=2.8.6
+sqlparse>=0.4.2
