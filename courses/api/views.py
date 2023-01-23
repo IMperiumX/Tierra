@@ -31,7 +31,7 @@ class CourseViewSet(
     mixins.RetrieveModelMixin,
     viewsets.GenericViewSet,
 ):
-    queryset = Course.objects.all()
+    queryset = Course.objects.prefetch_related("modules__contents")
     serializer_class = CourseSerializer
 
     @action(
