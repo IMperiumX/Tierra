@@ -37,7 +37,10 @@ INSTALLED_APPS = (
     "allauth.socialaccount.providers.facebook",
     "drf_yasg",
     "corsheaders",
+    "silk",
+    "django_extensions",
 )
+
 
 MIDDLEWARE = (
     "corsheaders.middleware.CorsMiddleware",
@@ -47,6 +50,7 @@ MIDDLEWARE = (
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "silk.middleware.SilkyMiddleware",
 )
 
 # For backwards compatibility for Django 1.8

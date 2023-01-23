@@ -86,3 +86,5 @@ urlpatterns = [
         name="schema-swagger-ui",
     ),
 ]
+
+urlpatterns += [path("silk/", include("silk.urls", namespace="silk"))]

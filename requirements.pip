@@ -6,6 +6,8 @@ django-allauth>=0.24.1
 drf-yasg>=1.21.3
 django-cors-headers>=3.2.1
 coreapi>=2.3.3
+django-silk>=5.0.3
+django-extensions>=3.2.1
 
 # Production
 asgiref>=3.5.2
