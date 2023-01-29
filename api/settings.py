@@ -26,6 +26,7 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     # my apps
     "courses",
+    "ara",
     # 3rd party apps
     "rest_framework",
     "rest_framework.authtoken",
@@ -39,6 +40,8 @@ INSTALLED_APPS = (
     "corsheaders",
     "silk",
     "django_extensions",
+    "extra_views",
+    "oauth2_provider",
 )
 
 
@@ -52,6 +55,10 @@ MIDDLEWARE = (
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "silk.middleware.SilkyMiddleware",
 )
+
+SILKY_PYTHON_PROFILER = True
+SILKY_META = True
+SILKY_ANALYZE_QUERIES = True
 
 # For backwards compatibility for Django 1.8
 MIDDLEWARE_CLASSES = MIDDLEWARE
@@ -130,10 +137,11 @@ REST_FRAMEWORK = {
 }
 
 SWAGGER_SETTINGS = {
-    "LOGIN_URL": "login",
-    "LOGOUT_URL": "logout",
+    # "LOGIN_URL": "login",
+    # "LOGOUT_URL": "logout",
 }
 
+LOGIN_URL = "/admin/login/"
 
 # For api purposes only. Use a white list in the real world.
 CORS_ORIGIN_ALLOW_ALL = True
