@@ -1,10 +1,10 @@
-from django.shortcuts import get_object_or_404
-from rest_framework import generics, mixins, viewsets
+from rest_framework import mixins, viewsets
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.generics import GenericAPIView
+
 
 from ..models import Course, Subject
 from .permissions import IsEnrolled
