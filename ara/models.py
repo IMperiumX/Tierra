@@ -1,11 +1,11 @@
-# Copyright (c) 2022 The ARA Records Ansible authors
-# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
-
+from django.contrib.auth import get_user_model
 from django.db import models
-from django.utils import timezone
+
 
 from model_utils.models import TimeFramedModel, TimeStampedModel
 from model_utils.fields import StatusField, UUIDField
+
+User = get_user_model()
 
 
 class DurationModel(TimeFramedModel, TimeStampedModel):
@@ -17,12 +17,6 @@ class DurationModel(TimeFramedModel, TimeStampedModel):
         abstract = True
 
     duration = models.DurationField(blank=True, null=True)
-
-    def save(self, *args, **kwargs):
-        # Compute duration based on available timestamps
-        if self.ended is not None:
-            self.duration = self.ended - self.started
-        return super().save(*args, **kwargs)
 
 
 class Label(TimeStampedModel):
@@ -81,7 +75,7 @@ class Playbook(DurationModel):
     path = models.CharField(max_length=255)
 
     user = models.ForeignKey(
-        "auth.User",
+        User,
         on_delete=models.CASCADE,
         related_name="playbooks",
     )
