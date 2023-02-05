@@ -24,11 +24,12 @@ urlpatterns = [
     path("api/v1/registration/", include("dj_rest_auth.registration.urls")),
     path("account/", include("allauth.urls")),
     path("admin/", admin.site.urls),
-    # Courses API
+    # Apps API
     path(
         "api/v1/",
         include("courses.api.urls", namespace="courses-api"),
     ),
+    path("api/v1/", include("ara.urls", namespace="ara-api")),
     # swagger urls
     re_path(
         r"^swagger(?P<format>\.json|\.yaml)$",
