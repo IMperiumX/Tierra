@@ -18,220 +18,650 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Content',
+            name="Content",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('type', model_utils.fields.StatusField(choices=[('log', 'log'), ('stdout', 'stdout'), ('stderr', 'stderr'), ('traceback', 'traceback')], default='log', max_length=100, no_check_for_status=True)),
-                ('content', models.BinaryField(max_length=4294967295)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "type",
+                    model_utils.fields.StatusField(
+                        choices=[
+                            ("log", "log"),
+                            ("stdout", "stdout"),
+                            ("stderr", "stderr"),
+                            ("traceback", "traceback"),
+                        ],
+                        default="log",
+                        max_length=100,
+                        no_check_for_status=True,
+                    ),
+                ),
+                ("content", models.BinaryField(max_length=4294967295)),
             ],
         ),
         migrations.CreateModel(
-            name='File',
+            name="File",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('path', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="created",
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="modified",
+                    ),
+                ),
+                ("path", models.CharField(max_length=255)),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='FileContent',
+            name="FileContent",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('sha1', models.CharField(max_length=40, unique=True)),
-                ('contents', models.BinaryField(max_length=4294967295)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="created",
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="modified",
+                    ),
+                ),
+                ("sha1", models.CharField(max_length=40, unique=True)),
+                ("contents", models.BinaryField(max_length=4294967295)),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Host',
+            name="Host",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('name', models.CharField(max_length=255)),
-                ('facts', models.BinaryField(max_length=4294967295)),
-                ('changed', models.IntegerField(default=0)),
-                ('failed', models.IntegerField(default=0)),
-                ('ok', models.IntegerField(default=0)),
-                ('skipped', models.IntegerField(default=0)),
-                ('unreachable', models.IntegerField(default=0)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="created",
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="modified",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("facts", models.BinaryField(max_length=4294967295)),
+                ("changed", models.IntegerField(default=0)),
+                ("failed", models.IntegerField(default=0)),
+                ("ok", models.IntegerField(default=0)),
+                ("skipped", models.IntegerField(default=0)),
+                ("unreachable", models.IntegerField(default=0)),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Label',
+            name="Label",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('name', models.CharField(max_length=255, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="created",
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="modified",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255, unique=True)),
             ],
             options={
-                'db_table': 'labels',
+                "db_table": "labels",
             },
         ),
         migrations.CreateModel(
-            name='Play',
+            name="Play",
             fields=[
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('start', models.DateTimeField(blank=True, null=True, verbose_name='start')),
-                ('end', models.DateTimeField(blank=True, null=True, verbose_name='end')),
-                ('duration', models.DurationField(blank=True, null=True)),
-                ('name', models.CharField(blank=True, max_length=255, null=True)),
-                ('uuid', model_utils.fields.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('status', model_utils.fields.StatusField(choices=[('unknown', 'unknown'), ('running', 'running'), ('completed', 'completed'), ('expired', 'expired')], default='unknown', max_length=100, no_check_for_status=True)),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="created",
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="modified",
+                    ),
+                ),
+                (
+                    "start",
+                    models.DateTimeField(blank=True, null=True, verbose_name="start"),
+                ),
+                (
+                    "end",
+                    models.DateTimeField(blank=True, null=True, verbose_name="end"),
+                ),
+                ("duration", models.DurationField(blank=True, null=True)),
+                ("name", models.CharField(blank=True, max_length=255, null=True)),
+                (
+                    "uuid",
+                    model_utils.fields.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                (
+                    "status",
+                    model_utils.fields.StatusField(
+                        choices=[
+                            ("unknown", "unknown"),
+                            ("running", "running"),
+                            ("completed", "completed"),
+                            ("expired", "expired"),
+                        ],
+                        default="unknown",
+                        max_length=100,
+                        no_check_for_status=True,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Playbook',
+            name="Playbook",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('start', models.DateTimeField(blank=True, null=True, verbose_name='start')),
-                ('end', models.DateTimeField(blank=True, null=True, verbose_name='end')),
-                ('duration', models.DurationField(blank=True, null=True)),
-                ('name', models.CharField(max_length=255, null=True)),
-                ('ansible_version', models.CharField(max_length=255)),
-                ('client_version', models.CharField(max_length=255, null=True)),
-                ('python_version', models.CharField(max_length=255, null=True)),
-                ('server_version', models.CharField(max_length=255)),
-                ('status', model_utils.fields.StatusField(choices=[('unknown', 'unknown'), ('expired', 'expired'), ('running', 'running'), ('completed', 'completed'), ('failed', 'failed')], default='unknown', max_length=100, no_check_for_status=True)),
-                ('controller', models.CharField(default='localhost', max_length=255, null=True)),
-                ('arguments', models.BinaryField(max_length=4294967295)),
-                ('path', models.CharField(max_length=255)),
-                ('labels', models.ManyToManyField(to='ara.label')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='playbooks', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="created",
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="modified",
+                    ),
+                ),
+                (
+                    "start",
+                    models.DateTimeField(blank=True, null=True, verbose_name="start"),
+                ),
+                (
+                    "end",
+                    models.DateTimeField(blank=True, null=True, verbose_name="end"),
+                ),
+                ("duration", models.DurationField(blank=True, null=True)),
+                ("name", models.CharField(max_length=255, null=True)),
+                ("ansible_version", models.CharField(max_length=255)),
+                ("client_version", models.CharField(max_length=255, null=True)),
+                ("python_version", models.CharField(max_length=255, null=True)),
+                ("server_version", models.CharField(max_length=255)),
+                (
+                    "status",
+                    model_utils.fields.StatusField(
+                        choices=[
+                            ("unknown", "unknown"),
+                            ("expired", "expired"),
+                            ("running", "running"),
+                            ("completed", "completed"),
+                            ("failed", "failed"),
+                        ],
+                        default="unknown",
+                        max_length=100,
+                        no_check_for_status=True,
+                    ),
+                ),
+                (
+                    "controller",
+                    models.CharField(default="localhost", max_length=255, null=True),
+                ),
+                ("arguments", models.BinaryField(max_length=4294967295)),
+                ("path", models.CharField(max_length=255)),
+                ("labels", models.ManyToManyField(to="ara.label")),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="playbooks",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Task',
+            name="Task",
             fields=[
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('start', models.DateTimeField(blank=True, null=True, verbose_name='start')),
-                ('end', models.DateTimeField(blank=True, null=True, verbose_name='end')),
-                ('duration', models.DurationField(blank=True, null=True)),
-                ('action', models.TextField()),
-                ('handler', models.BooleanField()),
-                ('lineno', models.IntegerField()),
-                ('name', models.TextField(blank=True, null=True)),
-                ('tags', models.BinaryField(max_length=4294967295)),
-                ('uuid', model_utils.fields.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('status', model_utils.fields.StatusField(choices=[('unknown', 'unknown'), ('completed', 'completed'), ('expired', 'expired'), ('failed', 'failed'), ('running', 'running')], default='unknown', max_length=100, no_check_for_status=True)),
-                ('file', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tasks', to='ara.file')),
-                ('play', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tasks', to='ara.play')),
-                ('playbook', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tasks', to='ara.playbook')),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="created",
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="modified",
+                    ),
+                ),
+                (
+                    "start",
+                    models.DateTimeField(blank=True, null=True, verbose_name="start"),
+                ),
+                (
+                    "end",
+                    models.DateTimeField(blank=True, null=True, verbose_name="end"),
+                ),
+                ("duration", models.DurationField(blank=True, null=True)),
+                ("action", models.TextField()),
+                ("handler", models.BooleanField()),
+                ("lineno", models.IntegerField()),
+                ("name", models.TextField(blank=True, null=True)),
+                ("tags", models.BinaryField(max_length=4294967295)),
+                (
+                    "uuid",
+                    model_utils.fields.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                (
+                    "status",
+                    model_utils.fields.StatusField(
+                        choices=[
+                            ("unknown", "unknown"),
+                            ("completed", "completed"),
+                            ("expired", "expired"),
+                            ("failed", "failed"),
+                            ("running", "running"),
+                        ],
+                        default="unknown",
+                        max_length=100,
+                        no_check_for_status=True,
+                    ),
+                ),
+                (
+                    "file",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tasks",
+                        to="ara.file",
+                    ),
+                ),
+                (
+                    "play",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tasks",
+                        to="ara.play",
+                    ),
+                ),
+                (
+                    "playbook",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tasks",
+                        to="ara.playbook",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Result',
+            name="Result",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('start', models.DateTimeField(blank=True, null=True, verbose_name='start')),
-                ('end', models.DateTimeField(blank=True, null=True, verbose_name='end')),
-                ('duration', models.DurationField(blank=True, null=True)),
-                ('status', model_utils.fields.StatusField(choices=[('ok', 'ok'), ('failed', 'failed'), ('skipped', 'skipped'), ('unreachable', 'unreachable'), ('unknown', 'unknown')], default='ok', max_length=100, no_check_for_status=True)),
-                ('changed', models.BooleanField(default=False)),
-                ('ignore_errors', models.BooleanField(default=False)),
-                ('content', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='content_results', to='ara.content')),
-                ('delegated_to', models.ManyToManyField(related_name='delegated_results', to='ara.host')),
-                ('host', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='host_results', to='ara.host')),
-                ('play', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='play_results', to='ara.play')),
-                ('playbook', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='palybook_results', to='ara.playbook')),
-                ('task', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='task_results', to='ara.task')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="created",
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="modified",
+                    ),
+                ),
+                (
+                    "start",
+                    models.DateTimeField(blank=True, null=True, verbose_name="start"),
+                ),
+                (
+                    "end",
+                    models.DateTimeField(blank=True, null=True, verbose_name="end"),
+                ),
+                ("duration", models.DurationField(blank=True, null=True)),
+                (
+                    "status",
+                    model_utils.fields.StatusField(
+                        choices=[
+                            ("ok", "ok"),
+                            ("failed", "failed"),
+                            ("skipped", "skipped"),
+                            ("unreachable", "unreachable"),
+                            ("unknown", "unknown"),
+                        ],
+                        default="ok",
+                        max_length=100,
+                        no_check_for_status=True,
+                    ),
+                ),
+                ("changed", models.BooleanField(default=False)),
+                ("ignore_errors", models.BooleanField(default=False)),
+                (
+                    "content",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="content_results",
+                        to="ara.content",
+                    ),
+                ),
+                (
+                    "delegated_to",
+                    models.ManyToManyField(
+                        related_name="delegated_results", to="ara.host"
+                    ),
+                ),
+                (
+                    "host",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="host_results",
+                        to="ara.host",
+                    ),
+                ),
+                (
+                    "play",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="play_results",
+                        to="ara.play",
+                    ),
+                ),
+                (
+                    "playbook",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="palybook_results",
+                        to="ara.playbook",
+                    ),
+                ),
+                (
+                    "task",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="task_results",
+                        to="ara.task",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Record',
+            name="Record",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('value', models.BinaryField(max_length=4294967295)),
-                ('key', models.CharField(max_length=255)),
-                ('type', models.CharField(max_length=255)),
-                ('playbook', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='records', to='ara.playbook')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="created",
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="modified",
+                    ),
+                ),
+                ("value", models.BinaryField(max_length=4294967295)),
+                ("key", models.CharField(max_length=255)),
+                ("type", models.CharField(max_length=255)),
+                (
+                    "playbook",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="records",
+                        to="ara.playbook",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.AddField(
-            model_name='play',
-            name='playbook',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='plays', to='ara.playbook'),
+            model_name="play",
+            name="playbook",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="plays",
+                to="ara.playbook",
+            ),
         ),
         migrations.CreateModel(
-            name='LatestHost',
+            name="LatestHost",
             fields=[
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('name', models.CharField(max_length=255, primary_key=True, serialize=False)),
-                ('host', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ara.host')),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="created",
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="modified",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, primary_key=True, serialize=False),
+                ),
+                (
+                    "host",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="ara.host"
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.AddField(
-            model_name='host',
-            name='playbook',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='hosts', to='ara.playbook'),
+            model_name="host",
+            name="playbook",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="hosts",
+                to="ara.playbook",
+            ),
         ),
         migrations.AddField(
-            model_name='file',
-            name='content',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='files', to='ara.filecontent'),
+            model_name="file",
+            name="content",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="files",
+                to="ara.filecontent",
+            ),
         ),
         migrations.AddField(
-            model_name='file',
-            name='playbook',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='files', to='ara.playbook'),
+            model_name="file",
+            name="playbook",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="files",
+                to="ara.playbook",
+            ),
         ),
         migrations.AddField(
-            model_name='content',
-            name='play',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='play_content', to='ara.play'),
+            model_name="content",
+            name="play",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="play_content",
+                to="ara.play",
+            ),
         ),
         migrations.AddField(
-            model_name='content',
-            name='playbook',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='playbook_content', to='ara.playbook'),
+            model_name="content",
+            name="playbook",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="playbook_content",
+                to="ara.playbook",
+            ),
         ),
         migrations.AddField(
-            model_name='content',
-            name='result',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='result_content', to='ara.result'),
+            model_name="content",
+            name="result",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="result_content",
+                to="ara.result",
+            ),
         ),
         migrations.AddField(
-            model_name='content',
-            name='task',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='task_content', to='ara.task'),
+            model_name="content",
+            name="task",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="task_content",
+                to="ara.task",
+            ),
         ),
     ]
