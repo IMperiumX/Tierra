@@ -31,6 +31,7 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     # my apps
     "courses",
+    "users",
     "ara",
     # 3rd party apps
     "rest_framework",
@@ -154,3 +155,6 @@ LOGIN_URL = "/admin/login/"
 CORS_ORIGIN_ALLOW_ALL = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+AUTH_USER_MODEL = "users.User"
+
