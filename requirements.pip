@@ -1,4 +1,5 @@
 Django>=4.0.4
+django-environ>=0.9.0
 dj-rest-auth @ git+https://github.com/iMerica/dj-rest-auth.git@master
 djangorestframework>=3.13.0
 djangorestframework-simplejwt>=5.2.0

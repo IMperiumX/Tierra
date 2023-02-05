@@ -1,7 +1,12 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import environ
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+env = environ.Env()
+
+env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -77,6 +82,8 @@ DATABASES = {
     }
 }
 
+DATABASES = {"default": env.db("DATABASE_URL")}
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
