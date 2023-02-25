@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from django.conf import settings
+from .managers import CustomUserManager
 
 
 class UserMixin:
@@ -23,9 +24,6 @@ class UserMixin:
             deleted_user.is_active = False
             deleted_user.save()
         return deleted_user
-
-    def get_admin_user(self):
-        return self.objects.filter(is_superuser=True)
 
 
 class User(UserMixin, AbstractUser):
@@ -59,8 +57,9 @@ class User(UserMixin, AbstractUser):
         choices=SaveMetadataToDisk.choices, default=SaveMetadataToDisk.OFF
     )
 
-    datetime_rules = models.JSONField()
     default_timezone = models.TextField(
         choices=[(x, x) for x in pytz.all_timezones],
         default="UTC",
     )
+
+    objects = CustomUserManager()
