@@ -4,12 +4,12 @@ from model_utils.fields import StatusField, UUIDField
 from model_utils.models import TimeFramedModel, TimeStampedModel
 
 from .conf import (
+    CONTENT_STATUS,
     DEFAULT_CONTROLLER,
     PLAY_STATUS,
     PLAYBOOK_STATUS,
     RESULT_STATUS,
     TASK_STATUS,
-    CONTENT_STATUS,
 )
 
 User = get_user_model()

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.admin import sites
 from librephotos.models import Cluster, Face, Person, Photo
@@ -7,9 +6,6 @@ from librephotos.models import Cluster, Face, Person, Photo
 class MyAdminSite(sites.AdminSite):
     def get_app_list(self, request):
         app_dict = self._build_app_dict(request)
-        # serialize the app list to a list of dicts
-        from pprint import pprint
-
         print(app_dict)
         app_list = [
             app_dict[app]
